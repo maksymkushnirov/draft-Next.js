@@ -1,6 +1,6 @@
 import { notFound } from "next/navigation";
 
-async function fetchPosts(id) {
+async function fetchPost(id) {
   try {
     const response = await fetch(
       `https://jsonplaceholder.typicode.com/posts/${id}`,
@@ -11,6 +11,10 @@ async function fetchPosts(id) {
 
     const data = await response.json();
 
+    if (!data.title) {
+      notFound();
+    }
+
     return data;
   } catch (err) {
     notFound();
@@ -20,7 +24,7 @@ async function fetchPosts(id) {
 export default async function Page({ params }) {
   const { id } = params;
 
-  const data = await fetchPosts(id);
+  const data = await fetchPost(id);
 
   return (
     <main>
@@ -37,4 +41,4 @@ export async function generateStaticParams() {
   return data.map((post) => ({ id: String(post.id) }));
 }
 
-export const dynamicParams = false;
+// export const dynamicParams = false;
