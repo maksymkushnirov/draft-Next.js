@@ -6,12 +6,10 @@ export default async function Page() {
   const data = await response.json();
 
   console.log(data);
+
   return (
     <main>
       <h1>Blog</h1>
-      {data.map((post) => (
-        <p>{post.title}</p>
-      ))}
     </main>
   );
 }
