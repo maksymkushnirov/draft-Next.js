@@ -7,7 +7,7 @@ export default function Header() {
       <h3>Header</h3>
       <Link href="/">Homepage</Link>
       <Link href="/blog">Blog</Link>
-      <SearchBar />
+      {/* <SearchBar /> */}
     </header>
   );
 }
